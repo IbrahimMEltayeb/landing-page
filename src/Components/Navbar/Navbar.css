@@ -4,17 +4,23 @@
   background-color: #2a2069;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: 0;
+  padding: 0 20px;
+  z-index: 10; /* Ensure navbar stays on top */
 }
 
 .topbarRight {
   flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
 }
 
 .logo {
   font-size: 24px;
-  margin-left: 100px;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -22,10 +28,14 @@
 
 .topbarCenter {
   flex: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchbar {
   width: 100%;
+  max-width: 400px;
   height: 30px;
   background-color: white;
   border-radius: 30px;
@@ -53,18 +63,32 @@
   flex: 6;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  color: white;
+  justify-content: space-between;
+}
+
+.topbarLinks {
+  display: flex;
+  align-items: center;
 }
 
 .topbarLink {
   padding: 12px;
   font-size: 20px;
   cursor: pointer;
+  color: white;
 }
 
 .topbarIcons {
   display: flex;
+  align-items: center;
+  /* margin-right: 150px; */
+}
+
+.topbarIconItem {
+  margin-right: 15px;
+  padding: 12px;
+  cursor: pointer;
+  color: white;
 }
 
 .topbarIconBadge {
@@ -73,16 +97,80 @@
   padding: 3px 5px;
 }
 
-.topbarIconItem {
-  margin-right: 15px;
-  padding: 12px;
-  cursor: pointer;
-}
-
 .topbarImg {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  display: none; /* Initially hidden */
+}
+
+@media (max-width: 800px) {
+  .topbarLinks,
+  .searchbar {
+    display: none; /* Hide links and search bar on small screens */
+  }
+
+  .topbarContainer {
+    justify-content: space-between;
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+
+  .topbarLeft {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    margin: 1rem;
+  }
+
+  .menuButton {
+    display: block; /* Show menu button on small screens */
+  }
+
+  .topbarLinks.showMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 55px; /* Adjust to be just below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: #2a2069;
+    z-index: 20; /* Ensure menu is above other content */
+  }
+
+  .topbarLink {
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid #444;
+  }
+
+  .topbarIcons {
+    justify-content: center;
+  }
+
+  .topbarIconItem {
+    margin-right: 0;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbarLeft {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin: 1rem;
+  }
 }
